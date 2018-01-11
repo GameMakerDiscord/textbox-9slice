@@ -1,5 +1,6 @@
 /// draw_textbox(string, [x, y]);
-// args: string, [x, y, characters, speaker, center, textbox_sprite, textbox_index, stretch_center]
+// ARGS: string, [x, y, characters, speaker, center, textbox_sprite, textbox_index, stretch_center]
+// RETURNS: true only if the message is completely drawn/typed out
 
 //Args
 var _string = argument[0];
@@ -148,4 +149,5 @@ var edgeScaleH = edgeH/cellSize;
 draw_string(_x + cellSize, _y + cellSize, _text, -1, edgeW);
     
     
-    
+//Return
+return string_length(_text) >= string_length(_string);

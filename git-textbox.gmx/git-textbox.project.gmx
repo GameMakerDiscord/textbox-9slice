@@ -15,11 +15,11 @@
       <script>scripts\draw_textbox.gml</script>
       <scripts name="Extra">
         <script>scripts\draw_textbox_char.gml</script>
-        <script>scripts\draw_textbox_size.gml</script>
       </scripts>
       <scripts name="Modify">
         <script>scripts\tb_set_size.gml</script>
         <script>scripts\tb_reset_size.gml</script>
+        <script>scripts\tb_set_speed.gml</script>
       </scripts>
     </scripts>
     <scripts name="Internal">

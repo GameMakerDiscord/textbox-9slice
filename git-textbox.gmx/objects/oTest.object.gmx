@@ -29,6 +29,14 @@
 //Draw text
 draw_textbox("Potatoes are good!");
 
+tb_set_size(100, 100);
+draw_textbox("Tomatoes are cool", 64, 64);
+
+tb_set_size(400, 50);
+draw_textbox("Noooo", 30, 500);
+
+tb_reset_size();
+
 //Test 2
 /*tb_set_size(400, 150);
 draw_textbox(undefined, undefined, "Stretched");
