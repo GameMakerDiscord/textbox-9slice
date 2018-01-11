@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Test
 //Draw text
-draw_textbox(undefined, undefined, "Potatoes are good!");
+draw_textbox("Potatoes are good!");
 
 //Test 2
 /*tb_set_size(400, 150);

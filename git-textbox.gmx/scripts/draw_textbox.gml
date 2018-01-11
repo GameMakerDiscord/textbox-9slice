@@ -1,12 +1,14 @@
-/// draw_textbox(x, y, string);
-// args: x, y, string, [characters, speaker, center, textbox_sprite, textbox_index, stretch_center]
+/// draw_textbox(string, [x, y]);
+// args: string, [x, y, characters, speaker, center, textbox_sprite, textbox_index, stretch_center]
 
 //Args
-var _x = argument[0];
-var _y = argument[1];
-var _string = argument[2];
+var _string = argument[0];
 
-//Optional args are handled by separate scripts
+//Optional
+var _x = undefined;
+var _y = undefined;
+
+//Optional args that are handled by separate scripts
 var _char = -1; //How many characters to display, -1 for all
 var _speaker = undefined; //Who is the speaker? (Using speaker_add())
 var _center = false; //Whether to draw the textbox in the center
@@ -18,6 +20,8 @@ var _stretch = false; //Whether to stretch the parts of the textbox or tile them
 var _tbHeight = 0.2; //Height perctange of the textbox
 
 //Optional args if given
+if (argument_count > 1) _x = argument[1];
+if (argument_count > 2) _y = argument[2];
 if (argument_count > 3) _char = argument[3];
 if (argument_count > 4) _speaker = argument[4];
 if (argument_count > 5) _center = argument[5];
@@ -42,6 +46,15 @@ var _h = ternary(global.tbHeight == -1, guiH * _tbHeight, global.tbHeight);
 //Position
 _x = ternary(_x == undefined, 0, _x);
 _y = ternary(_y == undefined, guiH - _h, _y);
+
+//Size based on position
+if (_x > 0){
+    _w -= _x;
+}
+
+if (_y > guiH - _h){
+    _h += (guiH - _h) - _y;
+}
 
 //Sprite sizes
 var cellSize = sprite_get_width(_tb)/3;
@@ -132,7 +145,7 @@ var edgeScaleH = edgeH/cellSize;
     draw_sprite_part(_tb, _tbIn, cellSize*2, cellSize*2, cellSize, cellSize, (_x + _w) - cellSize, (_y + _h) - cellSize);
     
 //Draw text
-draw_string(_x + cellSize, _y + cellSize, _text);
+draw_string(_x + cellSize, _y + cellSize, _text, -1, edgeW);
     
     
     
