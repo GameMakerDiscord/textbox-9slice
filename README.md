@@ -10,7 +10,7 @@ They are to be used in the Draw GUI event.
 
 Here are the main functions in this package:
 
-## draw_textbox(text [x, y])
+## draw_textbox(text, [x, y])
 
 Draws a textbox on the screen.
 
