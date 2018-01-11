@@ -13,12 +13,32 @@
   <scripts name="scripts">
     <scripts name="Textbox">
       <script>scripts\draw_textbox.gml</script>
+      <scripts name="Extra">
+        <script>scripts\draw_textbox_char.gml</script>
+        <script>scripts\draw_textbox_size.gml</script>
+      </scripts>
+      <scripts name="Modify">
+        <script>scripts\tb_set_size.gml</script>
+        <script>scripts\tb_reset_size.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Internal">
       <script>scripts\ternary.gml</script>
       <script>scripts\draw_string.gml</script>
     </scripts>
+    <scripts name="Init">
+      <script>scripts\tb_init.gml</script>
+      <script>scripts\tb_pragma.gml</script>
+    </scripts>
   </scripts>
+  <objects name="objects">
+    <objects name="Test">
+      <object>objects\oTest</object>
+    </objects>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rmTest</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>

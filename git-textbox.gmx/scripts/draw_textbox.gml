@@ -1,35 +1,43 @@
 /// draw_textbox(x, y, string);
-// args: x, y, string, [characters, speaker, center, w, h, textbox_sprite, textbox_index, stretch_center]
+// args: x, y, string, [characters, speaker, center, textbox_sprite, textbox_index, stretch_center]
 
 //Args
 var _x = argument[0];
 var _y = argument[1];
 var _string = argument[2];
 
-//Optional args
 //Optional args are handled by separate scripts
-var _char = ternary(argument_count > 3, argument[3], -1); //How many characters to display, -1 for all
-var _speaker = ternary(argument_count > 4, argument[4], undefined); //Who is the speaker? (Using speaker_add())
-var _center = ternary(argument_count > 5, argument[5], false); //Whether to draw the textbox in the center
-var _w = ternary(argument_count > 6, argument[6], undefined); //Width of the textbox, undefined for GUI width
-var _h = ternary(argument_count > 7, argument[7], undefined); //Height of the textbox, undefined for GUI height
-var _tb = ternary(argument_count > 8, argument[8], sTextbox); //Textbox sprite
-var _tbIn = ternary(argument_count > 9, argument[9], 0); //Textbox image index
-var _stretch = ternary(argument_count > 10, argument[10], 1); //Whether to stretch the center part of the textbox or tile it (if false)
+var _char = -1; //How many characters to display, -1 for all
+var _speaker = undefined; //Who is the speaker? (Using speaker_add())
+var _center = false; //Whether to draw the textbox in the center
+//var _w = undefined; //(Moved to global var) Width of the textbox, undefined for GUI width
+//var _h = undefined; //(Moved to global var) Height of the textbox, undefined for GUI height
+var _tb = sTextbox; //Textbox sprite
+var _tbIn = 0; //Textbox image index
+var _stretch = false; //Whether to stretch the parts of the textbox or tile them (if false)
+var _tbHeight = 0.2; //Height perctange of the textbox
+
+//Optional args if given
+if (argument_count > 3) _char = argument[3];
+if (argument_count > 4) _speaker = argument[4];
+if (argument_count > 5) _center = argument[5];
+//if (argument_count > 6) _w = argument[6];
+//if (argument_count > 7) _h = argument[7];
+if (argument_count > 6) _tb = argument[6];
+if (argument_count > 7) _tbIn = argument[7];
+if (argument_count > 8) _stretch = argument[8];
+if (argument_count > 9) _tbHeight = argument[9];
 
 //Text to display
 var _text = ternary(_char >= 0, string_copy(_string, 1, _char), _string);
-
-//Properties
-var _tbHeight = 0.2;
 
 //Data
 var guiH = display_get_gui_height();
 var guiW = display_get_gui_width();
 
 //Size
-_w = ternary(_w == undefined, guiW, _w);
-_h = ternary(_h == undefined, guiH * _tbHeight, _h);
+var _w = ternary(global.tbWidth == -1, guiW, global.tbWidth);
+var _h = ternary(global.tbHeight == -1, guiH * _tbHeight, global.tbHeight);
 
 //Position
 _x = ternary(_x == undefined, 0, _x);
@@ -56,12 +64,57 @@ var edgeScaleH = edgeH/cellSize;
     else{
         for(var h=0; h<edgeH; h+=cellSize){
             for(var w=0; w<edgeW; w+=cellSize){
-                var cX, cY;
-                cX = _x + cellSize + w;
-                cY = _y + cellSize + h;
+                var cX = _x + cellSize + w;
+                var cY = _y + cellSize + h;
             
                 draw_sprite_part(_tb, _tbIn, cellSize, cellSize, cellSize, cellSize, cX, cY);
             }
+        }
+    }
+    
+//Edges
+    //Stretched
+    if (_stretch){
+        //Top
+        draw_sprite_part_ext(_tb, _tbIn, cellSize, 0, cellSize, cellSize, _x + cellSize, _y, edgeScaleW, 1, -1, 1);
+        
+        //Bottom
+        draw_sprite_part_ext(_tb, _tbIn, cellSize, cellSize*2, cellSize, cellSize, _x + cellSize, (_y + _h) - cellSize, edgeScaleW, 1, -1, 1);
+        
+        //Left
+        draw_sprite_part_ext(_tb, _tbIn, 0, cellSize, cellSize, cellSize, _x, _y + cellSize, 1, edgeScaleH, -1, 1);
+        
+        //Right
+        draw_sprite_part_ext(_tb, _tbIn, cellSize*2, cellSize, cellSize, cellSize, (_x + _w) - cellSize, _y + cellSize, 1, edgeScaleH, -1, 1);
+    }
+    //Tiled
+    else{
+        //Top
+        for(var i=0; i<edgeW; i+=cellSize){
+            var cX = _x + cellSize + i;
+            
+            draw_sprite_part(_tb, _tbIn, cellSize, 0, cellSize, cellSize, cX, _y);
+        }
+        
+        //Bottom
+        for(var i=0; i<edgeW; i+=cellSize){
+            var cX = _x + cellSize + i;
+            
+            draw_sprite_part(_tb, _tbIn, cellSize, cellSize*2, cellSize, cellSize, cX, (_y + _h) - cellSize);
+        }
+        
+        //Left
+        for(var i=0; i<edgeH; i+=cellSize){
+            var cY = _y + cellSize + i;
+            
+            draw_sprite_part(_tb, _tbIn, 0, cellSize, cellSize, cellSize, _x, cY);
+        }
+        
+        //Right
+        for(var i=0; i<edgeH; i+=cellSize){
+            var cY = _y + cellSize + i;
+            
+            draw_sprite_part(_tb, _tbIn, cellSize*2, cellSize, cellSize, cellSize, (_x + _w) - cellSize, cY);
         }
     }
 
@@ -77,19 +130,6 @@ var edgeScaleH = edgeH/cellSize;
     
     //Bottom Right
     draw_sprite_part(_tb, _tbIn, cellSize*2, cellSize*2, cellSize, cellSize, (_x + _w) - cellSize, (_y + _h) - cellSize);
-    
-//Edges
-    //Top
-    draw_sprite_part_ext(_tb, _tbIn, cellSize, 0, cellSize, cellSize, _x + cellSize, _y, edgeScaleW, 1, -1, 1);
-    
-    //Bottom
-    draw_sprite_part_ext(_tb, _tbIn, cellSize, cellSize*2, cellSize, cellSize, _x + cellSize, (_y + _h) - cellSize, edgeScaleW, 1, -1, 1);
-    
-    //Left
-    draw_sprite_part_ext(_tb, _tbIn, 0, cellSize, cellSize, cellSize, _x, _y + cellSize, 1, edgeScaleH, -1, 1);
-    
-    //Right
-    draw_sprite_part_ext(_tb, _tbIn, cellSize*2, cellSize, cellSize, cellSize, (_x + _w) - cellSize, _y + cellSize, 1, edgeScaleH, -1, 1);
     
 //Draw text
 draw_string(_x + cellSize, _y + cellSize, _text);
