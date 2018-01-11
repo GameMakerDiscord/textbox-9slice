@@ -5,9 +5,20 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sTextbox</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="Textbox">
+      <script>scripts\draw_textbox.gml</script>
+    </scripts>
+    <scripts name="Internal">
+      <script>scripts\ternary.gml</script>
+      <script>scripts\draw_string.gml</script>
+    </scripts>
+  </scripts>
   <help>
     <rtf>help.rtf</rtf>
   </help>
