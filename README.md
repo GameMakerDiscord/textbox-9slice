@@ -34,7 +34,7 @@ Use this function for a typing effect. The second argument specifies how many ch
 
 The three arguments [x, y, speaker] are optional. [x, y] can take `undefined` - it will be the same as not filling those arguments.
 
-[speaker] is the ID of the speaker to use, and it's optional. Read more under the **Speakers** section.
+[speaker] is the ID of the speaker to use, and it's optional. Read more under the [**Speakers**](https://github.com/GameMakerDiscord/textbox-9slice/blob/master/README.md#speaker-functions) section.
 
 #### Example
 ```js
