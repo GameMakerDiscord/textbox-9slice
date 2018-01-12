@@ -52,8 +52,7 @@ spkMario = speaker_add("Mario", sMario, 0);
             <kind>1</kind>
             <string>///Test
 //Draw text
-speaker_stretch(true);
-draw_textbox_char("Somebody toucha my spaghet!", undefined, 0, -1, spkMario);
+draw_textbox_char("Somebody toucha my spaghet!", -1, undefined, 0, spkMario);
 
 //Test 2
 /*tb_set_size(400, 150);

@@ -8,7 +8,7 @@ global.tbHeight = -1;
 //global.tbSpeed = 1;
 
 //Speaker options
-global.spkStretch = false; //Stretch the speaker photo?
+global.spkStretch = true; //Stretch the speaker photo?
 
 //Characters
 enum ch{

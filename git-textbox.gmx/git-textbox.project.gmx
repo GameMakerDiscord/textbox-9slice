@@ -38,10 +38,10 @@
       <script>scripts\ternary.gml</script>
       <script>scripts\draw_string.gml</script>
       <script>scripts\cArr.gml</script>
-    </scripts>
-    <scripts name="Init">
-      <script>scripts\tb_init.gml</script>
-      <script>scripts\tb_pragma.gml</script>
+      <scripts name="Init">
+        <script>scripts\tb_init.gml</script>
+        <script>scripts\tb_pragma.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">

@@ -1,4 +1,4 @@
-/// speaker_add(name, picture_sprite, picture_index);
+/// speaker_add(name, sprite, subimg);
 // Creates a new speaker for the textboxes, returns ID
 
 //Args
