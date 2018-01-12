@@ -5,4 +5,11 @@ global.tbWidth = -1;
 global.tbHeight = -1;
 
 //Textbox text speed
-global.tbSpeed = 1;
+//global.tbSpeed = 1;
+
+//Characters
+enum ch{
+    name, spr, ind
+}
+
+global.speakers = ds_list_create();

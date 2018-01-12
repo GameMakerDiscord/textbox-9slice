@@ -19,12 +19,16 @@
       <scripts name="Modify">
         <script>scripts\tb_set_size.gml</script>
         <script>scripts\tb_reset_size.gml</script>
-        <script>scripts\tb_set_speed.gml</script>
+        <script>scripts\Xtb_set_speed.gml</script>
       </scripts>
+    </scripts>
+    <scripts name="Characters">
+      <script>scripts\speaker_add.gml</script>
     </scripts>
     <scripts name="Internal">
       <script>scripts\ternary.gml</script>
       <script>scripts\draw_string.gml</script>
+      <script>scripts\cArr.gml</script>
     </scripts>
     <scripts name="Init">
       <script>scripts\tb_init.gml</script>
