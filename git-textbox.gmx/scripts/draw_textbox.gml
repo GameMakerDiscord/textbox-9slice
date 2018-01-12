@@ -34,7 +34,7 @@ if (argument_count > 8) _stretch = argument[8];
 if (argument_count > 9) _tbHeight = argument[9];
 
 //Text to display
-var _text = ternary(_char >= 0, string_copy(_string, 1, _char), _string);
+//var _text = ternary(_char >= 0, string_copy(_string, 1, _char), _string);
 
 //Data
 var guiH = display_get_gui_height();
@@ -71,6 +71,8 @@ var edgeScaleH = edgeH/cellSize;
 var tX = _x + cellSize;
 var tY = _y + cellSize;
 
+var tXMarg = 0;
+
 //Speaker
 var spkMarg = 0; //Speaker photo/text margin
 
@@ -91,7 +93,8 @@ if (_speaker != undefined){
     }
     
     //Adjust text
-    tX += (sprite_get_width(spkSpr)*scl) + (spkMarg*2) + cellSize;
+    tXMarg = (sprite_get_width(spkSpr)*scl) + (spkMarg*2) + cellSize;
+    tX += tXMarg;
     tY += string_height(spkName) + spkMarg*2;
     
 }
@@ -175,7 +178,7 @@ if (_speaker != undefined){
     draw_sprite_part(_tb, _tbIn, cellSize*2, cellSize*2, cellSize, cellSize, (_x + _w) - cellSize, (_y + _h) - cellSize);
     
 //Draw text
-draw_string(tX, tY, _text, -1, edgeW);
+draw_string(tX, tY, _string, -1, edgeW - tXMarg, _char);
 
 //Draw speaker
 if (_speaker != undefined){
@@ -195,4 +198,4 @@ if (_speaker != undefined){
     
     
 //Return
-return string_length(_text) >= string_length(_string);
+return _char >= string_length(_string) || _char==-1;

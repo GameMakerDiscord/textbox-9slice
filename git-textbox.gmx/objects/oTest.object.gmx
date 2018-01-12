@@ -28,6 +28,9 @@
             <string>///Init test
 //Init speaker
 spkMario = speaker_add("Mario", sMario, 0);
+
+//Text info
+chars = 0;
 </string>
           </argument>
         </arguments>
@@ -52,7 +55,12 @@ spkMario = speaker_add("Mario", sMario, 0);
             <kind>1</kind>
             <string>///Test
 //Draw text
-draw_textbox_char("Somebody toucha my spaghet!", -1, undefined, 0, spkMario);
+draw_textbox_char("Somebody toucha my spaghet! Someone is in thisa house! You go to your housa! You toucha my spaghet. You breaka da chair, you sleepa da beda. It's-a me, Mario! Your uncle, Mario!\nNow gib back my spaghet! Yay!\nYummy! Full is my tummy!#Potatoes are good. Tomatoes are not. It is the truth, written in the Bible. If you don't believe me, you're a sinner!", 
+    chars, undefined, 0, spkMario);
+
+if (keyboard_check(vk_space)){
+    chars+=2;
+}
 
 //Test 2
 /*tb_set_size(400, 150);
