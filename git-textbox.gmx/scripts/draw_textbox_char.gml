@@ -1,5 +1,5 @@
-/// draw_textbox_char(x, y, string, characters, [speaker]);
-
+/// draw_textbox_char(string, x, y, characters, [speaker]);
+/// Specify -1 in characters to display full string
 //Optional arg
 var _speaker = undefined;
 

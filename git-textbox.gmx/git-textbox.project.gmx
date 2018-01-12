@@ -6,7 +6,12 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sTextbox</sprite>
+    <sprites name="Textboxes">
+      <sprite>sprites\sTextbox</sprite>
+    </sprites>
+    <sprites name="Speakers">
+      <sprite>sprites\sMario</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -16,7 +21,7 @@
       <scripts name="Extra">
         <script>scripts\draw_textbox_char.gml</script>
       </scripts>
-      <scripts name="Modify">
+      <scripts name="Options">
         <script>scripts\tb_set_size.gml</script>
         <script>scripts\tb_reset_size.gml</script>
         <script>scripts\Xtb_set_speed.gml</script>
@@ -24,6 +29,10 @@
     </scripts>
     <scripts name="Characters">
       <script>scripts\speaker_add.gml</script>
+      <script>scripts\speaker_delete.gml</script>
+      <scripts name="Options">
+        <script>scripts\speaker_stretch.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Internal">
       <script>scripts\ternary.gml</script>

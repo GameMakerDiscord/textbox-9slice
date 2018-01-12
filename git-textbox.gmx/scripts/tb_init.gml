@@ -7,6 +7,9 @@ global.tbHeight = -1;
 //Textbox text speed
 //global.tbSpeed = 1;
 
+//Speaker options
+global.spkStretch = false; //Stretch the speaker photo?
+
 //Characters
 enum ch{
     name, spr, ind

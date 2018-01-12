@@ -66,6 +66,35 @@ var edgeH = _h - (cellSize*2);
 
 var edgeScaleW = edgeW/cellSize;
 var edgeScaleH = edgeH/cellSize;
+
+//Text position
+var tX = _x + cellSize;
+var tY = _y + cellSize;
+
+//Speaker
+var spkMarg = 0; //Speaker photo/text margin
+
+if (_speaker != undefined){
+    //Get array
+    var arr = global.speakers[| _speaker];
+    
+    //Get info
+    var spkName = arr[ch.name];
+    var spkSpr = arr[ch.spr];
+    var spkInd = arr[ch.ind];
+    
+    //Scale
+    var scl = 1;
+    
+    if (global.spkStretch){
+        scl = (edgeH-(spkMarg*2)) / sprite_get_height(spkSpr);
+    }
+    
+    //Adjust text
+    tX += (sprite_get_width(spkSpr)*scl) + (spkMarg*2) + cellSize;
+    tY += string_height(spkName) + spkMarg*2;
+    
+}
     
 //Draw sprites
 
@@ -146,7 +175,23 @@ var edgeScaleH = edgeH/cellSize;
     draw_sprite_part(_tb, _tbIn, cellSize*2, cellSize*2, cellSize, cellSize, (_x + _w) - cellSize, (_y + _h) - cellSize);
     
 //Draw text
-draw_string(_x + cellSize, _y + cellSize, _text, -1, edgeW);
+draw_string(tX, tY, _text, -1, edgeW);
+
+//Draw speaker
+if (_speaker != undefined){
+    //Sprite
+        //Unstretched
+        if (!global.spkStretch){
+            draw_sprite(spkSpr, spkInd, _x + cellSize + spkMarg, _y + cellSize + spkMarg);
+        }
+        //Stretched
+        else{
+            draw_sprite_ext(spkSpr, spkInd, _x + cellSize + spkMarg, _y + cellSize + spkMarg, scl, scl, 0, -1, 1);
+        }
+    
+    //Name
+    draw_string(tX, _y + cellSize + spkMarg, spkName + ":");
+}
     
     
 //Return
