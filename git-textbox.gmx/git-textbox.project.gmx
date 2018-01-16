@@ -27,6 +27,9 @@
         <script>scripts\Xtb_set_speed.gml</script>
         <script>scripts\tb_set_sprite.gml</script>
         <script>scripts\tb_reset_sprite.gml</script>
+        <scripts name="Animation">
+          <script>scripts\Xtb_set_shake.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <scripts name="Characters">

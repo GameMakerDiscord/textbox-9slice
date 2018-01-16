@@ -7,6 +7,9 @@ global.tbHeight = -1;
 global.tbSprite = sTextbox;
 global.tbIndex = 0;
 
+//Textbox animation
+//global.tbShake = 0;
+
 //Textbox text speed
 //global.tbSpeed = 1;
 
