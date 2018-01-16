@@ -1,6 +1,6 @@
 # 9slice Textbox Scripts
 
-This package has scripts for drawing a textbox with some text.
+This project has scripts for drawing a textbox with some text.
 
 # Usage
 
@@ -12,7 +12,7 @@ This project comes with a basic example for testing the scripts. Run the game an
 
 # Functions
 
-Here are the main functions in this package:
+Here are the main functions in this project:
 
 ## Textbox Functions
 
