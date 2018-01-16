@@ -1,14 +1,18 @@
 # 9slice Textbox Scripts
 
-This package has scripts for drawing a textbox with some text.
+This project has scripts for drawing a textbox with some text.
 
 # Usage
 
 **They are to be used in the Draw GUI event.**
 
+# Example
+
+This project comes with a basic example for testing the scripts. Run the game and hold SPACE for the text to appear.
+
 # Functions
 
-Here are the main functions in this package:
+Here are the main functions in this project:
 
 ## Textbox Functions
 
@@ -59,6 +63,18 @@ draw_textbox("This is a full size textbox");
 tb_set_size(64, 64);
 draw_textbox("This textbox is smol");
 tb_reset_size();
+```
+
+### tb_set_sprite(sprite, subimg)
+
+Changes the sprite used for the textboxes drawn after this function. By default, the scripts will use `sTextbox` which comes with this project. Use `tb_reset_sprite` to set the sprite to the default one.
+
+The sprite must be square, can be any size. Must be a 3x3 grid.
+
+```js
+tb_set_sprite(sNewTextbox, 1);
+draw_textbox("Whoa, a new textbox!");
+tb_reset_sprite();
 ```
 
 ## Speaker Functions
