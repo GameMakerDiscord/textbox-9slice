@@ -6,6 +6,10 @@ This package has scripts for drawing a textbox with some text.
 
 **They are to be used in the Draw GUI event.**
 
+# Example
+
+This project comes with a basic example for testing the scripts. Run the game and hold SPACE for the text to appear.
+
 # Functions
 
 Here are the main functions in this package:
@@ -52,6 +56,10 @@ These are options that you can modify before drawing a textbox - usage is simila
 By default, a textbox will automatically adjust its size according the GUI layer's size. Using this function, you can change the size to use in textbox functions that come after this.
 
 Use `tb_reset_size()` after you're done drawing a differently-sized textbox.
+
+### tb_set_sprite(sprite, subimg)
+
+Changes the sprite used for the textboxes drawn after this function. By default, the scripts will use `sTextbox` which comes with this project. Use `tb_reset_sprite` to set the sprite to the default one.
 
 ```js
 draw_textbox("This is a full size textbox");
