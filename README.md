@@ -57,16 +57,24 @@ By default, a textbox will automatically adjust its size according the GUI layer
 
 Use `tb_reset_size()` after you're done drawing a differently-sized textbox.
 
-### tb_set_sprite(sprite, subimg)
-
-Changes the sprite used for the textboxes drawn after this function. By default, the scripts will use `sTextbox` which comes with this project. Use `tb_reset_sprite` to set the sprite to the default one.
-
 ```js
 draw_textbox("This is a full size textbox");
 
 tb_set_size(64, 64);
 draw_textbox("This textbox is smol");
 tb_reset_size();
+```
+
+### tb_set_sprite(sprite, subimg)
+
+Changes the sprite used for the textboxes drawn after this function. By default, the scripts will use `sTextbox` which comes with this project. Use `tb_reset_sprite` to set the sprite to the default one.
+
+The sprite must be square, can be any size. Must be a 3x3 grid.
+
+```js
+tb_set_sprite(sNewTextbox, 1);
+draw_textbox("Whoa, a new textbox!");
+tb_reset_sprite();
 ```
 
 ## Speaker Functions
