@@ -45,10 +45,10 @@ for(var i=0; i<min(_max, string_length(_text)); i++){
     
     //next line
     var nextLine = false;
-    var _n = _word=="\" && _word_next=="n";
-    if (_word=="#" || _n){
+    //var _n = _word=="\" && _word_next=="n";
+    if (_word=="#"){
         nextLine = true;
-        i+=_n;
+        //i+=_n;
     }
     
     //draw

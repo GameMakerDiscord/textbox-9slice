@@ -72,6 +72,7 @@ var tX = _x + cellSize;
 var tY = _y + cellSize;
 
 var tXMarg = 0;
+var tYMarg = 0;
 
 //Speaker
 var spkMarg = 0; //Speaker photo/text margin
@@ -94,8 +95,9 @@ if (_speaker != undefined){
     
     //Adjust text
     tXMarg = (sprite_get_width(spkSpr)*scl) + (spkMarg*2) + cellSize;
+    tYMarg = string_height(spkName) + spkMarg*2;
     tX += tXMarg;
-    tY += string_height(spkName) + spkMarg*2;
+    tY += tYMarg;
     
 }
     
@@ -176,9 +178,32 @@ if (_speaker != undefined){
     
     //Bottom Right
     draw_sprite_part(_tb, _tbIn, cellSize*2, cellSize*2, cellSize, cellSize, (_x + _w) - cellSize, (_y + _h) - cellSize);
-    
+
+//Text surface
+var tSurf = surface_create(edgeW - tXMarg, edgeH - tYMarg);
+var surfH = edgeH - tYMarg;
+
+//Text height
+var tHeight = max(surfH, string_height_ext(string_copy(_string, 1, _char), -1, edgeW - tXMarg) * 1.2);
+
 //Draw text
-draw_string(tX, tY, _string, -1, edgeW - tXMarg, _char);
+surface_set_target(tSurf);
+
+draw_clear_alpha(0, 0);
+
+draw_set_blend_mode_ext(bm_one, bm_zero);
+
+draw_string(0, surfH - tHeight, _string, -1, edgeW - tXMarg, _char);
+
+draw_set_blend_mode(bm_normal);
+
+surface_reset_target();
+
+//Draw text surface
+draw_surface(tSurf, tX, tY);
+
+//Free surface
+surface_free(tSurf);
 
 //Draw speaker
 if (_speaker != undefined){

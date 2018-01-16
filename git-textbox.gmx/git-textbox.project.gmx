@@ -25,6 +25,8 @@
         <script>scripts\tb_set_size.gml</script>
         <script>scripts\tb_reset_size.gml</script>
         <script>scripts\Xtb_set_speed.gml</script>
+        <script>scripts\tb_set_sprite.gml</script>
+        <script>scripts\tb_reset_sprite.gml</script>
       </scripts>
     </scripts>
     <scripts name="Characters">
@@ -44,6 +46,9 @@
       </scripts>
     </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\ftLucida</font>
+  </fonts>
   <objects name="objects">
     <objects name="Test">
       <object>objects\oTest</object>
