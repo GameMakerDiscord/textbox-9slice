@@ -94,7 +94,7 @@ if (_speaker != undefined){
     }
     
     //Adjust text
-    tXMarg = (sprite_get_width(spkSpr)*scl) + (spkMarg*2) + cellSize;
+    tXMarg = ((sprite_get_width(spkSpr)*scl) + (spkMarg*2) + cellSize) * !global.spkOut;
     tYMarg = string_height(spkName) + spkMarg*2;
     tX += tXMarg;
     tY += tYMarg;
@@ -208,13 +208,20 @@ surface_free(tSurf);
 //Draw speaker
 if (_speaker != undefined){
     //Sprite
-        //Unstretched
-        if (!global.spkStretch){
-            draw_sprite(spkSpr, spkInd, _x + cellSize + spkMarg, _y + cellSize + spkMarg);
+        //Outside
+        if (global.spkOut){
+            draw_sprite(spkSpr, spkInd, _x + global.spkPX, (_y - sprite_get_height(spkSpr)) + global.spkPY);
         }
-        //Stretched
         else{
-            draw_sprite_ext(spkSpr, spkInd, _x + cellSize + spkMarg, _y + cellSize + spkMarg, scl, scl, 0, -1, 1);
+        //Inside
+            //Unstretched
+            if (!global.spkStretch){
+                draw_sprite(spkSpr, spkInd, (_x + cellSize + spkMarg) + global.spkPX, (_y + cellSize + spkMarg) + global.spkPY);
+            }
+            //Stretched
+            else{
+                draw_sprite_ext(spkSpr, spkInd, (_x + cellSize + spkMarg) + global.spkPX, (_y + cellSize + spkMarg) + global.spkPY, scl, scl, 0, -1, 1);
+            }
         }
     
     //Name

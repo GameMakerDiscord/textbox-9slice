@@ -15,6 +15,10 @@ global.tbIndex = 0;
 
 //Speaker options
 global.spkStretch = true; //Stretch the speaker photo?
+global.spkOut = false; //Draw speaker photo outside
+
+global.spkPX = 0;
+global.spkPY = 0;
 
 //Characters
 enum ch{

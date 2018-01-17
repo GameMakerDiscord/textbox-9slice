@@ -11,6 +11,7 @@
     </sprites>
     <sprites name="Speakers">
       <sprite>sprites\sMario</sprite>
+      <sprite>sprites\sMario2</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -32,11 +33,13 @@
         </scripts>
       </scripts>
     </scripts>
-    <scripts name="Characters">
+    <scripts name="Speakers">
       <script>scripts\speaker_add.gml</script>
       <script>scripts\speaker_delete.gml</script>
       <scripts name="Options">
         <script>scripts\speaker_stretch.gml</script>
+        <script>scripts\speaker_pic_out.gml</script>
+        <script>scripts\speaker_pic_offset.gml</script>
       </scripts>
     </scripts>
     <scripts name="Internal">
