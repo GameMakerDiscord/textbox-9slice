@@ -2,6 +2,8 @@
 
 This project has scripts for drawing a textbox with some text.
 
+![Example](https://i.imgur.com/tUIsbuY.gif)
+
 # Usage
 
 **They are to be used in the Draw GUI event.**
@@ -107,4 +109,18 @@ Set whether or not to stretch the speakers' images to fit the textbox.
 
 *Default: true*
 
+### speaker_pic_out(bool)
 
+Set whether or not to draw the speakers' images outside of the box. Note that stretching will not be applied if this is true.
+
+*Default: false*
+
+#### Example:
+
+![Example](https://i.imgur.com/czrxeKA.png)
+
+### speaker_pic_offset(x, y)
+
+Set an offset for the speakers' images. The x and y values will be added to the position of the images when they're drawn.
+
+*Default: 0, 0*
