@@ -4,6 +4,8 @@ This project has scripts for drawing a textbox with some text.
 
 ![Example](https://i.imgur.com/tUIsbuY.gif)
 
+Maintained by: gurpreetsinghmatharoo
+
 # Usage
 
 **They are to be used in the Draw GUI event.**
